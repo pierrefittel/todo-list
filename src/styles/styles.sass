@@ -1,0 +1,232 @@
+@use 'reset'
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap')
+
+$font-stack: 'Montserrat', sans-serif
+
+/* SCSS RGB */
+$background: #fdfdfd
+$menu: #e2e2e2
+$dashboard: #f5f5f5
+$quick-access: #575757
+
+
+*
+    margin: 0
+    box-sizing: border-box
+
+html
+    position: relative
+    height: 100%
+
+body
+    font-family: $font-stack
+    letter-spacing: .1em
+    min-height: 100vh
+    margin: 0
+    display: flex
+    justify-content: center
+    align-content: center
+    .content
+        margin: 0
+        display: flex
+        background-color: $background
+        height: 100vh
+        width: 100vw
+        #menu
+            background-color: $menu
+            padding-top: 2em
+            min-width: 6em
+            box-shadow: 2px 2px 4px $menu
+            z-index: 2
+            display: flex
+            flex-direction: column
+            align-items: center
+            gap: 1em
+            .menu-item
+                font-size: 2em
+                color: white
+                padding: .4em
+                border: solid 2px white
+                border-radius: 12px
+                user-select: none
+                width: 70%
+                text-align: center
+                font-weight: bold
+                .tooltiptext
+                    font-size: .3em
+                    background-color: rgb(119, 119, 119)
+                    color: #fff
+                    text-align: center
+                    padding: .5em
+                    position: fixed
+                    opacity: 0
+                    transition-delay: .5s
+                    transition-duration: .5s
+                img
+                    filter: invert(100%) 
+                &:hover
+                    color: darkgray
+                    border-color: darkgray
+                    img
+                        filter: invert(60%) 
+                    .tooltiptext
+                        opacity: 0.8
+                        visibility: visible
+                &:active
+                    color: white
+                    border-color: transparent
+                    background-color: darkgray
+                    img
+                        filter: invert(100%)
+                    .tooltiptext
+                        visibility: hidden
+        #dashboard
+            background-color: $dashboard
+            min-width: 35em
+            flex: 1
+            display: flex
+            flex-direction: column
+            align-content: center
+            padding: 1em
+            gap: 2em
+            #add-project-menu
+                border-radius: 6px
+                background-color: $menu
+                width: 100%
+                box-shadow: 0px 0px 6px $menu
+                padding: 2em
+                display: flex
+                flex-direction: column
+                align-content: center
+                gap: 1em
+                input
+                    font-size: 1em
+                    font-family: $font-stack
+                    border: none
+                    outline: none
+                    background-color: transparent
+                    border-bottom: solid 1px gray
+                    &::placeholder
+                        font-style: italic
+                ::-webkit-calendar-picker-indicator
+                    margin-left: 0px
+                div
+                    display: flex
+                    align-items: center
+                    gap: 1em
+                #status
+                    display: flex
+                    gap: 1em
+                    #progress-bar
+                        display: flex
+                        width: 100%
+                        height: 100%
+                        justify-content: flex-start
+                        gap: .1em
+                        .progress
+                            height: 100%
+                            aspect-ratio: 1
+                            border: solid 1px gray
+                #action-menu
+                    display: flex
+                    align-items: bottom
+                    justify-content: flex-end
+                    gap: 18px
+                    .action
+                        width: 2.5em
+                        height: 2.5em
+                        display: flex
+                        justify-content: center
+                        padding: 2px
+                        border-radius: 50%
+                        img
+                            filter: opacity(60%)
+                        &:hover
+                            background-color: darkgray
+                            transition-duration: .5s
+                            img
+                                filter: invert(100%) 
+                        &:active
+                            background-color: white
+                            img
+                                filter: invert(50%) 
+            .separator-h
+                width: 100%
+                border-bottom: solid 2px $menu
+            #todo-list
+                display: grid
+                gap: 1em
+                grid-template-rows: repeat(2, 1fr)
+                grid-template-columns: repeat(auto-fit, minmax(30em, 1fr))
+                overflow-y: scroll
+                &::-webkit-scrollbar
+                    display: none
+                .project
+                    border-radius: 6px
+                    background-color: $menu
+                    width: 100%
+                    height: 12em
+                    box-shadow: 0px 0px 6px $menu
+                    display: grid
+                    grid-template-columns: 3em 2em auto 2em
+                    align-items: center
+                    justify-items: center
+                    padding: 1em
+                    font-size: .7em
+                    @import 'checkbox'
+                    .separator-v
+                        height: 100%
+                        border-right: solid 2px gray
+                    .project-detail
+                        display: flex
+                        flex-direction: column
+                        justify-self: flex-start
+                        gap: .9em
+                        .project-title
+                            font-weight: bold
+                        .project-description
+                            color: gray
+                        .progress-bar-unselectable
+                            display: flex
+                            width: 100%
+                            height: 100%
+                            justify-content: flex-start
+                            gap: .1em
+                            .progress-unselectable
+                                height: 10px
+                                aspect-ratio: 1
+                                border: solid 1px gray
+                        .project-start-date
+                            font-style: italic
+                            color: gray
+                        .project-due-date
+                            font-style: italic
+                            color: gray
+                    .action-menu
+                        align-self: flex-start
+                        display: flex
+                        flex-direction: column
+                        gap: 1em
+                        .action
+                            width: 2em
+                            height: 2em
+                            display: flex
+                            justify-content: center
+                            padding: 2px
+                            border-radius: 50%
+                            img
+                                filter: opacity(60%)
+                            &:hover
+                                background-color: darkgray
+                                transition-duration: .5s
+                                img
+                                    filter: invert(100%) 
+                            &:active
+                                background-color: white
+                                img
+                                    filter: invert(50%) 
+        #project-overview
+            flex: 1
+            border-left: solid 2px $menu
+            background-color: $dashboard
+            min-width: 30em

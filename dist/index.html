@@ -4,10 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandbox</title>
     <script src="main.js" defer></script>
-    <title>To-do List</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="content" id="content"></div>
+    <div class="content" id="content">
+        <div class="menu" id="menu">
+            <div class="menu-item" id="add-project" onclick="displayProjectMenu()">
+                <img src="plus.svg" alt="Add">
+                <span class="tooltiptext">Add new project</span>
+            </div>
+            <div class="menu-item" id="view-project" onclick="loadProjects()">
+                <img src="view.svg" alt="View">
+                <span class="tooltiptext">Load projects</span>
+            </div>
+            <div class="menu-item" id="view-project" onclick="deleteSelected()">
+                <img src="delete.svg" alt="Purge storage">
+                <span class="tooltiptext">Delete selected</span>
+            </div>
+        </div>
+        <div class="dashboard" id="dashboard"></div>
+        <div class="project-overview" id="project-overview"></div>
+    </div>
 </body>
 </html>
